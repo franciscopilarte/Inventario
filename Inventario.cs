@@ -60,6 +60,25 @@ namespace Inventario
 
         }
 
+        public void AgruparProducto(decimal precio)
+        {
+            var grupos = productos
+                .Where(p => p.Precio > precio)
+                .GroupBy(p => p.Precio);
+
+            foreach (var grupo in grupos)
+            {
+                Console.WriteLine($"Productos con precio: {grupo.Key:C}");
+
+                foreach (var producto in grupo)
+                {
+                    Console.WriteLine($"  - {producto.Nombre}: {producto.Precio:C}");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
 
     }
 }
