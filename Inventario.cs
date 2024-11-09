@@ -79,6 +79,31 @@ namespace Inventario
             }
         }
 
+        public void Resumen()
+        {
+            var productoConPrecioAlto = productos
+                .OrderByDescending(p => p.Precio)
+                .FirstOrDefault();
+            if (productoConPrecioAlto != null)
+            {
+                Console.WriteLine($"\nProducto con el precio más alto: {productoConPrecioAlto.Nombre} - {productoConPrecioAlto.Precio:C}");
+            }
+
+            // Producto con el precio más bajo
+            var productoConPrecioBajo = productos
+                .OrderBy(p => p.Precio)
+                .FirstOrDefault();
+            if (productoConPrecioBajo != null)
+            {
+                Console.WriteLine($"Producto con el precio más bajo: {productoConPrecioBajo.Nombre} - {productoConPrecioBajo.Precio:C}");
+            }
+
+            // Precio promedio de todos los productos
+            var precioPromedio = productos.Average(p => p.Precio);
+            Console.WriteLine($"Precio promedio de los productos: {precioPromedio:C}");
+        }
+
+
 
     }
 }
