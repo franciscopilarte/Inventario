@@ -12,7 +12,7 @@ namespace Inventario
 
         public Inventario()
         {
-            productos = new List<Producto>(); // Inicializamos la lista
+            productos = new List<Producto>(); 
         }
 
         public void AgregarProducto(Producto producto)
@@ -27,7 +27,20 @@ namespace Inventario
                 .OrderBy(p => p.Precio);
         }
 
+        public void ActualizarPrecioProducto(string nombre, decimal nuevoPrecio)
+        {
+            var producto = productos.FirstOrDefault(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
 
+            if (producto != null)
+            {
+                producto.Precio = nuevoPrecio;
+                Console.WriteLine($"El precio del producto '{nombre}' ha sido actualizado a {nuevoPrecio:C}.");
+            }
+            else
+            {
+                Console.WriteLine($"No se encontró un producto con el nombre '{nombre}'.");
+            }
+        }
 
 
     }
