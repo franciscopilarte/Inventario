@@ -122,6 +122,13 @@ namespace Tarea
 
             } while (opciones != 5);
 
+            Console.WriteLine("REPORTE - RESUMIDO DEL INVENTARIO");
+
+            inventario.Resumen();
+            Console.WriteLine();
+            inventario.ProductoMostrar();
+
+
         }
 
     }
