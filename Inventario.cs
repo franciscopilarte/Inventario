@@ -105,5 +105,14 @@ namespace Inventario
 
 
 
+        public void ProductoMostrar()
+        {
+            foreach (var producto in productos)
+            {
+                Console.WriteLine($"- {producto.Nombre}: {producto.Precio:C}");
+            }
+        }
+
+
     }
 }
